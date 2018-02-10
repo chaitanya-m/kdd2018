@@ -1,0 +1,19 @@
+As the datasets are very large, we have provided a script to generate shuffled streams on the fly and instructions to generate the streams from the UCI originals.
+
+Please download the original datasets from the UCI repository. The WISDM (raw) dataset can be obtained from http://www.cis.fordham.edu/wisdm/dataset.php
+
+All datasets should be converted to CSV's if they are already not CSV's. Where data is split into multiple files, please concatenate the files. For instance, PAMAP2 has 9 files, one per subject, and HAR has 4 files, divided by device.
+
+The gas sensor dataset requires id's to be mapped to their corresponding classes, and then the id column to be deleted, because there is a many-one mapping from id's to classes.
+
+CSV's should be converted to ARFF format. This can be done manually or by using the MOA converter as below.
+
+java -cp moa.jar moa.DoTask CSV2Arff -i input.csv -o output.arff
+
+Once this is done, separate the head of the ARFF (metadata) from the tail (data), and store the files in the folder structure indicated in the Python script.
+
+The script will handle all the shuffling, experimental runs, and chart-making.
+
+Simply uncomment the charts you would like to generate and run the script.
+
+
